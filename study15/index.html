@@ -9,17 +9,18 @@
 </head>
 <body>
     <div id="app">
-        <!-- <child-one v-if="type === 'child-one'"></child-one>
-        <child-two v-if="type === 'child-two'"></child-two> -->
-        <component :is="type"></component>
+        <child-one v-if="type === 'child-one'"></child-one>
+        <child-two v-if="type === 'child-two'"></child-two>
+        <!-- <component :is="type"></component> -->
         <button @click="handleBtnClick">change</button>
     </div>
     <script>
+        // v-once可以提高性能
         Vue.component('child-one', {
-            template: '<div>child-one</div>'
+            template: '<div v-once>child-one</div>'
         })
         Vue.component('child-two', {
-            template: '<div>child-two</div>'
+            template: '<div v-once>child-two</div>'
         })
 
         var app = new Vue({
